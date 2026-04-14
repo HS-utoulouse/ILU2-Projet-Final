@@ -32,6 +32,10 @@ public abstract class Reservation {
 		return (heure + "/" + jour + "/" + mois + "/" + annee);
 	}
 
+	public Boolean memeDate(Reservation res) {
+		return this.getDate().equals(res.getDate());
+	}
+
 	public String getMail() {
 		return (client.getAdresseMail());
 	}
@@ -39,5 +43,7 @@ public abstract class Reservation {
 	public String getCommentaire() {
 		return commentaire;
 	}
+
+	public abstract boolean chevauche(Reservation autreReservation);
 
 }

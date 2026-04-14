@@ -4,7 +4,8 @@
  */
 package dialog;
 
-import control.ControlReservation;
+import control.controlReservation.ControlReservation;
+import model.CarnetReservation;
 import presentation.PresentationJFrameReservation;
 
 /**
@@ -14,4 +15,20 @@ import presentation.PresentationJFrameReservation;
 public class DialogReservation {
 	private PresentationJFrameReservation presentationJFrameReservation;
 	private ControlReservation controlReservation;
+	private int jour;
+	private int mois;
+	private int annee;
+	private String heure;
+	private int nombrePersonnes;
+	private int numTable;
+
+	public DialogReservation(ControlReservation controlResa) {
+		this.controlReservation = controlResa;
+	}
+
+	public void init() {
+		presentationJFrameReservation = new PresentationJFrameReservation();
+
+	}
+
 }

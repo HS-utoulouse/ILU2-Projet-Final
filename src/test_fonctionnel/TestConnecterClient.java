@@ -14,17 +14,16 @@ public class TestConnecterClient {
 		//
 
 		ControlCreerClient controlCreerClient = new ControlCreerClient(carnetClientele);
-		BoundaryCreerClient boundaryCreerClient 
-			= new BoundaryCreerClient(controlCreerClient);
+		BoundaryCreerClient boundaryCreerClient = new BoundaryCreerClient(controlCreerClient);
 		boundaryCreerClient.creerClient();
 
 		System.out.println("\n---------- CONNECTER CLIENT ----------");
-		ControlConnecterClient controlConnecterClient = new ControlConnecterClient(carnetClientele);
+		ControlConnecterClient controlConnecterClient = new ControlConnecterClient(carnetClientele, null);
 		BoundaryConnecterClient boundaryConnecterClient = new BoundaryConnecterClient(controlConnecterClient);
 		int numClient = boundaryConnecterClient.connecterClient();
 
 		System.out.println("\n\n---------- CONTROLE DES DONNEES ----------");
-		System.out.println("Création du client n°" + numClient);
+		System.out.println("Crï¿½ation du client nï¿½" + numClient);
 		System.out.println(carnetClientele);
 	}
 }
