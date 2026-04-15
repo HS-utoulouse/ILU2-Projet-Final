@@ -7,28 +7,67 @@ package presentation;
 import com.github.lgooddatepicker.optionalusertools.DateChangeListener;
 import com.github.lgooddatepicker.zinternaltools.DateChangeEvent;
 import dialog.DialogReservation;
+import java.time.LocalDate;
 
 @SuppressWarnings("serial")
 public class PresentationJFrameReservation extends javax.swing.JFrame {
 
     private DialogReservation dialog;
-    private javax.swing.JLabel[] pinTables;
-    
+    private javax.swing.JLabel[] SelectedTable;
     public PresentationJFrameReservation() {
     }
 
     public void initFrame() {
         initComponents();
-        hourPicker.setEnabled(false);
-        titre2.setEnabled(false);
-        numberPicker.setEnabled(false);
-        titre3.setEnabled(false);
-        //nombrePersonnesSelecteur.setEnabled(false);
-        //tableSelection.setEnabled(false);
-        titre4.setEnabled(false);
+        selecteurHeure.setEnabled(false);
+        titreHeure.setEnabled(false);
+        selecteurAdultes.setEnabled(false);
+        selecteurEnfants.setEnabled(false);
+        titreNombrePersonnes.setEnabled(false);
+        titreTable.setEnabled(false);
         tableauDesTables.setEnabled(false);
         listeTable.setEnabled(false);
+        PlanTable.setEnabled(false);
         
+        SelectedTable = new javax.swing.JLabel[]{
+            SelectedTable1, SelectedTable2, SelectedTable3, 
+            SelectedTable4, SelectedTable5, SelectedTable6
+        };
+        
+        for (int i = 0; i < SelectedTable.length; i++) {
+            SelectedTable[i].setVisible(false);
+        }
+        
+    }
+    
+    public void mettreEnSurbrillanceTable(int numTable) {
+        for (int i = 0; i < SelectedTable.length; i++) {
+            SelectedTable[i].setVisible(false);
+        }
+        
+        if (numTable >= 1 && numTable <= SelectedTable.length) {
+            SelectedTable[numTable - 1].setVisible(true);
+        }
+    }
+    
+    public void mettreAjourListeTable(int nbPersonnes){
+        
+        javax.swing.DefaultListModel<String> modeleFiltre = new javax.swing.DefaultListModel<>();
+
+        if (nbPersonnes <= 2) {
+            modeleFiltre.addElement("Table 1");
+            
+        } 
+        else if (nbPersonnes <= 4) {
+            modeleFiltre.addElement("Table 2");
+            modeleFiltre.addElement("Table 3");
+            modeleFiltre.addElement("Table 4");
+            modeleFiltre.addElement("Table 5");
+        } 
+        else {
+            modeleFiltre.addElement("Table 6");
+        }
+        listeTable.setModel(modeleFiltre);
     }
     
     public void afficherPopUpConfirmation(String texte){
@@ -49,37 +88,24 @@ public class PresentationJFrameReservation extends javax.swing.JFrame {
         this.dialog = dialog;
     }
     
-    public void afficherPinTable(int numTable) {
-        for (int i = 0; i < pinTables.length; i++) {
-            pinTables[i].setVisible(false);
-        }
-        
-        if (numTable >= 1 && numTable <= pinTables.length) {
-            pinTables[numTable - 1].setVisible(true);
-        }
-    }
-    
     public void enable(String item){
         switch (item) {
-            case "hour":
-                hourPicker.setEnabled(true);
-                titre2.setEnabled(true);
+            case "heure":
+                selecteurHeure.setEnabled(true);
+                titreHeure.setEnabled(true);
                 break;
-            case "number":
+            case "nombre":
                 //nombrePersonnesSelecteur.setEnabled(true);
-                numberPicker.setEnabled(true);
-                titre3.setEnabled(true);
+                selecteurEnfants.setEnabled(true);
+                selecteurAdultes.setEnabled(true);
+                titreNombrePersonnes.setEnabled(true);
                 break;
             case "table":
                 //tableSelection.setEnabled(true);
                 tableauDesTables.setEnabled(true);
-                titre4.setEnabled(true);
+                titreTable.setEnabled(true);
                 listeTable.setEnabled(true);
-                
-
-                for (int i = 0; i < pinTables.length; i++) {
-                    pinTables[i].setEnabled(true);
-                }
+                PlanTable.setEnabled(true);
                 break;
             default:
                 throw new AssertionError();
@@ -93,7 +119,7 @@ public class PresentationJFrameReservation extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        dateHoureSelection = new javax.swing.JPanel();
+        zoneSelectionDate = new javax.swing.JPanel();
         titre1 = new javax.swing.JLabel();
         datePicker = new com.github.lgooddatepicker.components.DatePicker();
         datePicker.addDateChangeListener(new DateChangeListener(){
@@ -101,44 +127,53 @@ public class PresentationJFrameReservation extends javax.swing.JFrame {
                 datePickerDateChanged(dateEvent);
             }
         });
-        nombrePersonnesSelecteur = new javax.swing.JPanel();
-        titre3 = new javax.swing.JLabel();
-        numberPicker = new javax.swing.JComboBox<>();
+        zoneSelecteurNbrPersonnes = new javax.swing.JPanel();
+        titreNombrePersonnes = new javax.swing.JLabel();
+        selecteurAdultes = new javax.swing.JComboBox<>();
+        selecteurEnfants = new javax.swing.JComboBox<>();
+        infoAdultes = new javax.swing.JLabel();
+        infoEnfants = new javax.swing.JLabel();
         tableSelection = new javax.swing.JPanel();
-        titre4 = new javax.swing.JLabel();
+        titreTable = new javax.swing.JLabel();
         tableauDesTables = new javax.swing.JScrollPane();
         listeTable = new javax.swing.JList<>();
-        jLabel1 = new javax.swing.JLabel();
+        SelectedTable1 = new javax.swing.JLabel();
+        SelectedTable2 = new javax.swing.JLabel();
+        SelectedTable3 = new javax.swing.JLabel();
+        SelectedTable4 = new javax.swing.JLabel();
+        SelectedTable5 = new javax.swing.JLabel();
+        SelectedTable6 = new javax.swing.JLabel();
+        PlanTable = new javax.swing.JLabel();
         titrePage = new javax.swing.JLabel();
         finalOperations = new javax.swing.JPanel();
         validationButton = new javax.swing.JButton();
         annulationButton = new javax.swing.JButton();
-        nombrePersonnesSelecteur1 = new javax.swing.JPanel();
-        titre2 = new javax.swing.JLabel();
-        hourPicker = new javax.swing.JComboBox<>();
+        zoneSelecteurHeure = new javax.swing.JPanel();
+        titreHeure = new javax.swing.JLabel();
+        selecteurHeure = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        dateHoureSelection.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        dateHoureSelection.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        zoneSelectionDate.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        zoneSelectionDate.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         titre1.setText("1.Choisissez une date");
         titre1.setFont(new java.awt.Font("Liberation Sans", 0, 17)); // NOI18N
 
-        javax.swing.GroupLayout dateHoureSelectionLayout = new javax.swing.GroupLayout(dateHoureSelection);
-        dateHoureSelection.setLayout(dateHoureSelectionLayout);
-        dateHoureSelectionLayout.setHorizontalGroup(
-            dateHoureSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dateHoureSelectionLayout.createSequentialGroup()
+        javax.swing.GroupLayout zoneSelectionDateLayout = new javax.swing.GroupLayout(zoneSelectionDate);
+        zoneSelectionDate.setLayout(zoneSelectionDateLayout);
+        zoneSelectionDateLayout.setHorizontalGroup(
+            zoneSelectionDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(zoneSelectionDateLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(dateHoureSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(zoneSelectionDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(titre1)
                     .addComponent(datePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        dateHoureSelectionLayout.setVerticalGroup(
-            dateHoureSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dateHoureSelectionLayout.createSequentialGroup()
+        zoneSelectionDateLayout.setVerticalGroup(
+            zoneSelectionDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(zoneSelectionDateLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(titre1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -146,48 +181,77 @@ public class PresentationJFrameReservation extends javax.swing.JFrame {
                 .addContainerGap(47, Short.MAX_VALUE))
         );
 
-        nombrePersonnesSelecteur.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        zoneSelecteurNbrPersonnes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        titre3.setText("3.Indiquez le nombre de personnes");
-        titre3.setFont(new java.awt.Font("Liberation Sans", 0, 17)); // NOI18N
+        titreNombrePersonnes.setText("3.Indiquez le nombre de personnes");
+        titreNombrePersonnes.setFont(new java.awt.Font("Liberation Sans", 0, 17)); // NOI18N
 
-        numberPicker.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2", "3", "4", "5", "6", "7", "8", "" }));
-        numberPicker.setSelectedIndex(7);
-        numberPicker.setBackground(new java.awt.Color(200, 200, 200));
-        numberPicker.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        numberPicker.addActionListener(new java.awt.event.ActionListener() {
+        selecteurAdultes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "" }));
+        selecteurAdultes.setSelectedIndex(8);
+        selecteurAdultes.setBackground(new java.awt.Color(200, 200, 200));
+        selecteurAdultes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        selecteurAdultes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                numberPickerActionPerformed(evt);
+                selecteurAdultesActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout nombrePersonnesSelecteurLayout = new javax.swing.GroupLayout(nombrePersonnesSelecteur);
-        nombrePersonnesSelecteur.setLayout(nombrePersonnesSelecteurLayout);
-        nombrePersonnesSelecteurLayout.setHorizontalGroup(
-            nombrePersonnesSelecteurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(nombrePersonnesSelecteurLayout.createSequentialGroup()
+        selecteurEnfants.setBackground(new java.awt.Color(200, 200, 200));
+        selecteurEnfants.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "" }));
+        selecteurEnfants.setSelectedIndex(7);
+        selecteurEnfants.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        selecteurEnfants.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selecteurEnfantsActionPerformed(evt);
+            }
+        });
+
+        infoAdultes.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        infoAdultes.setText("Adultes");
+
+        infoEnfants.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        infoEnfants.setText("Enfants");
+
+        javax.swing.GroupLayout zoneSelecteurNbrPersonnesLayout = new javax.swing.GroupLayout(zoneSelecteurNbrPersonnes);
+        zoneSelecteurNbrPersonnes.setLayout(zoneSelecteurNbrPersonnesLayout);
+        zoneSelecteurNbrPersonnesLayout.setHorizontalGroup(
+            zoneSelecteurNbrPersonnesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(zoneSelecteurNbrPersonnesLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(nombrePersonnesSelecteurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(titre3)
-                    .addComponent(numberPicker, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(zoneSelecteurNbrPersonnesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(zoneSelecteurNbrPersonnesLayout.createSequentialGroup()
+                        .addComponent(titreNombrePersonnes)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(zoneSelecteurNbrPersonnesLayout.createSequentialGroup()
+                        .addComponent(selecteurAdultes, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(infoAdultes)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(selecteurEnfants, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(infoEnfants)
+                        .addGap(19, 19, 19))))
         );
-        nombrePersonnesSelecteurLayout.setVerticalGroup(
-            nombrePersonnesSelecteurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(nombrePersonnesSelecteurLayout.createSequentialGroup()
+        zoneSelecteurNbrPersonnesLayout.setVerticalGroup(
+            zoneSelecteurNbrPersonnesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(zoneSelecteurNbrPersonnesLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(titre3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(numberPicker, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addComponent(titreNombrePersonnes)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(zoneSelecteurNbrPersonnesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selecteurAdultes, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(selecteurEnfants, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(infoAdultes)
+                    .addComponent(infoEnfants))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         tableSelection.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         tableSelection.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        titre4.setText("4.Choisissez votre table");
-        titre4.setFont(new java.awt.Font("Liberation Sans", 0, 17)); // NOI18N
-        tableSelection.add(titre4, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 12, -1, -1));
+        titreTable.setText("4.Choisissez votre table");
+        titreTable.setFont(new java.awt.Font("Liberation Sans", 0, 17)); // NOI18N
+        tableSelection.add(titreTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 12, -1, -1));
 
         tableauDesTables.setViewportBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -207,8 +271,26 @@ public class PresentationJFrameReservation extends javax.swing.JFrame {
 
         tableSelection.add(tableauDesTables, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, 190, 250));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Plan_tables.JPG"))); // NOI18N
-        tableSelection.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+        SelectedTable1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/SelectedTable1.png"))); // NOI18N
+        tableSelection.add(SelectedTable1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+
+        SelectedTable2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/SelectedTable2.png"))); // NOI18N
+        tableSelection.add(SelectedTable2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+
+        SelectedTable3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/SelectedTable3.png"))); // NOI18N
+        tableSelection.add(SelectedTable3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+
+        SelectedTable4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/SelectedTable4.png"))); // NOI18N
+        tableSelection.add(SelectedTable4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+
+        SelectedTable5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/SelectedTable5.png"))); // NOI18N
+        tableSelection.add(SelectedTable5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+
+        SelectedTable6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/SelectedTable6.png"))); // NOI18N
+        tableSelection.add(SelectedTable6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+
+        PlanTable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Plan_tables.JPG"))); // NOI18N
+        tableSelection.add(PlanTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
         titrePage.setText("Réservez une table");
         titrePage.setFont(new java.awt.Font("Liberation Sans", 0, 17)); // NOI18N
@@ -247,44 +329,44 @@ public class PresentationJFrameReservation extends javax.swing.JFrame {
                 .addGroup(finalOperationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(annulationButton)
                     .addComponent(validationButton))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
-        nombrePersonnesSelecteur1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        zoneSelecteurHeure.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        titre2.setText("2.Choisissez l'heure");
-        titre2.setFont(new java.awt.Font("Liberation Sans", 0, 17)); // NOI18N
+        titreHeure.setText("2.Choisissez l'heure");
+        titreHeure.setFont(new java.awt.Font("Liberation Sans", 0, 17)); // NOI18N
 
-        hourPicker.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "11h30", "12h00", "12h30", "13h00", "13h30", "" }));
-        hourPicker.setSelectedIndex(5);
-        hourPicker.setBackground(new java.awt.Color(200, 200, 200));
-        hourPicker.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        hourPicker.addActionListener(new java.awt.event.ActionListener() {
+        selecteurHeure.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "11h30", "12h00", "12h30", "13h00", "13h30", "" }));
+        selecteurHeure.setSelectedIndex(5);
+        selecteurHeure.setBackground(new java.awt.Color(200, 200, 200));
+        selecteurHeure.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        selecteurHeure.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hourPickerActionPerformed(evt);
+                selecteurHeureActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout nombrePersonnesSelecteur1Layout = new javax.swing.GroupLayout(nombrePersonnesSelecteur1);
-        nombrePersonnesSelecteur1.setLayout(nombrePersonnesSelecteur1Layout);
-        nombrePersonnesSelecteur1Layout.setHorizontalGroup(
-            nombrePersonnesSelecteur1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(nombrePersonnesSelecteur1Layout.createSequentialGroup()
+        javax.swing.GroupLayout zoneSelecteurHeureLayout = new javax.swing.GroupLayout(zoneSelecteurHeure);
+        zoneSelecteurHeure.setLayout(zoneSelecteurHeureLayout);
+        zoneSelecteurHeureLayout.setHorizontalGroup(
+            zoneSelecteurHeureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(zoneSelecteurHeureLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(nombrePersonnesSelecteur1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(nombrePersonnesSelecteur1Layout.createSequentialGroup()
+                .addGroup(zoneSelecteurHeureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(zoneSelecteurHeureLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(hourPicker, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(titre2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(selecteurHeure, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(titreHeure, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        nombrePersonnesSelecteur1Layout.setVerticalGroup(
-            nombrePersonnesSelecteur1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(nombrePersonnesSelecteur1Layout.createSequentialGroup()
+        zoneSelecteurHeureLayout.setVerticalGroup(
+            zoneSelecteurHeureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(zoneSelecteurHeureLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(titre2)
+                .addComponent(titreHeure)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(hourPicker, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(selecteurHeure, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
@@ -295,14 +377,14 @@ public class PresentationJFrameReservation extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dateHoureSelection, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(nombrePersonnesSelecteur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(zoneSelectionDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(zoneSelecteurNbrPersonnes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(tableSelection, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(titrePage)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(finalOperations, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(nombrePersonnesSelecteur1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(zoneSelecteurHeure, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -311,11 +393,11 @@ public class PresentationJFrameReservation extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(titrePage)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dateHoureSelection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addComponent(nombrePersonnesSelecteur1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(zoneSelectionDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(zoneSelecteurHeure, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(nombrePersonnesSelecteur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(zoneSelecteurNbrPersonnes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(tableSelection, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -337,6 +419,7 @@ public class PresentationJFrameReservation extends javax.swing.JFrame {
     private void listeTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listeTableMouseClicked
         String tableSelectionnee = listeTable.getSelectedValue();
         int value = 0;
+        
         switch (tableSelectionnee) {
             case "Table 1":
                 value = 1;
@@ -359,46 +442,61 @@ public class PresentationJFrameReservation extends javax.swing.JFrame {
             default:
                 break;
         }
+        
         if (value > 0) {
-            afficherPinTable(value);
+            mettreEnSurbrillanceTable(value);
         }
-        //dialog.handleTableSelectedEvent(value);
+        dialog.handleTableSelectedEvent(value);
     }//GEN-LAST:event_listeTableMouseClicked
 
-    private void numberPickerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberPickerActionPerformed
-        int valeur = Integer.parseInt(numberPicker.getSelectedItem().toString());
-        //dialog.handleNumOfPersonsSelectedEvent(valeur);
-    }//GEN-LAST:event_numberPickerActionPerformed
+    private void selecteurAdultesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecteurAdultesActionPerformed
+        int valeur = Integer.parseInt(selecteurAdultes.getSelectedItem().toString());
+        dialog.handleNumAdulteSelectedEvent(valeur);
+    }//GEN-LAST:event_selecteurAdultesActionPerformed
 
-    private void hourPickerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hourPickerActionPerformed
-        String valeur = hourPicker.getSelectedItem().toString();
-       //dialog.handleTimeSelectedEvent(valeur);
+    private void selecteurHeureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecteurHeureActionPerformed
+        String valeur = selecteurHeure.getSelectedItem().toString();
+       dialog.handleHeureSelectedEvent(valeur);
 
-    }//GEN-LAST:event_hourPickerActionPerformed
+    }//GEN-LAST:event_selecteurHeureActionPerformed
+
+    private void selecteurEnfantsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecteurEnfantsActionPerformed
+        int valeur = Integer.parseInt(selecteurEnfants.getSelectedItem().toString());
+        dialog.handleNumEnfantSelectedEvent(valeur);
+    }//GEN-LAST:event_selecteurEnfantsActionPerformed
 
     public void datePickerDateChanged(DateChangeEvent dateEvent) {
-        //dialog.handleDateSelectedEvent(dateEvent.getNewDate());
+        dialog.handleDateSelectedEvent(dateEvent.getNewDate());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel PlanTable;
+    private javax.swing.JLabel SelectedTable1;
+    private javax.swing.JLabel SelectedTable2;
+    private javax.swing.JLabel SelectedTable3;
+    private javax.swing.JLabel SelectedTable4;
+    private javax.swing.JLabel SelectedTable5;
+    private javax.swing.JLabel SelectedTable6;
     private javax.swing.JButton annulationButton;
-    private javax.swing.JPanel dateHoureSelection;
     private com.github.lgooddatepicker.components.DatePicker datePicker;
     private javax.swing.JPanel finalOperations;
-    private javax.swing.JComboBox<String> hourPicker;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel infoAdultes;
+    private javax.swing.JLabel infoEnfants;
     private javax.swing.JList<String> listeTable;
-    private javax.swing.JPanel nombrePersonnesSelecteur;
-    private javax.swing.JPanel nombrePersonnesSelecteur1;
-    private javax.swing.JComboBox<String> numberPicker;
+    private javax.swing.JComboBox<String> selecteurAdultes;
+    private javax.swing.JComboBox<String> selecteurEnfants;
+    private javax.swing.JComboBox<String> selecteurHeure;
     private javax.swing.JPanel tableSelection;
     private javax.swing.JScrollPane tableauDesTables;
     private javax.swing.JLabel titre1;
-    private javax.swing.JLabel titre2;
-    private javax.swing.JLabel titre3;
-    private javax.swing.JLabel titre4;
+    private javax.swing.JLabel titreHeure;
+    private javax.swing.JLabel titreNombrePersonnes;
     private javax.swing.JLabel titrePage;
+    private javax.swing.JLabel titreTable;
     private javax.swing.JButton validationButton;
+    private javax.swing.JPanel zoneSelecteurHeure;
+    private javax.swing.JPanel zoneSelecteurNbrPersonnes;
+    private javax.swing.JPanel zoneSelectionDate;
     // End of variables declaration//GEN-END:variables
 
 }
