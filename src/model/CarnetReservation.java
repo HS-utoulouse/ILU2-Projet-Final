@@ -37,6 +37,7 @@ public class CarnetReservation<T extends Reservation> {
 			listeReservation[nombreReservation] = reservation;
 			nombreReservation += 1;
 		}
+                System.out.println("Une réservation a été ajouter au carnet");
 	}
 
 	@Override

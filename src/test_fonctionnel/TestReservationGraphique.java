@@ -1,7 +1,7 @@
 package test_fonctionnel;
 
 import control.controlReservation.ControlReservationRestaurant;
-import dialog.DialogReservation;
+import dialog.dialogReservation.DialogReservationRestaurant;
 import model.CarnetReservation;
 import model.Client;
 import model.reservation.ReservationRestaurant;
@@ -17,7 +17,7 @@ public class TestReservationGraphique {
         ControlReservationRestaurant control = new ControlReservationRestaurant(carnet, clientConnecte);
         
         // 3. Initialiser le Dialog (Le chef d'orchestre de l'interface)
-        DialogReservation dialog = new DialogReservation(control);
+        DialogReservationRestaurant dialog = new DialogReservationRestaurant(control);
         
         // 4. Lancer l'interface graphique !
         // (Appelle la méthode qui instancie ta PresentationJFrameReservation et la rend visible)

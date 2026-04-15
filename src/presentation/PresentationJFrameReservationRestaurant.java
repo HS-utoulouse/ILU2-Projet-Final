@@ -6,15 +6,16 @@ package presentation;
 
 import com.github.lgooddatepicker.optionalusertools.DateChangeListener;
 import com.github.lgooddatepicker.zinternaltools.DateChangeEvent;
-import dialog.DialogReservation;
+import dialog.dialogReservation.DialogReservation;
+import dialog.dialogReservation.DialogReservationRestaurant;
 import java.time.LocalDate;
 
 @SuppressWarnings("serial")
-public class PresentationJFrameReservation extends javax.swing.JFrame {
+public class PresentationJFrameReservationRestaurant extends javax.swing.JFrame {
 
-    private DialogReservation dialog;
+    private DialogReservationRestaurant dialog;
     private javax.swing.JLabel[] SelectedTable;
-    public PresentationJFrameReservation() {
+    public PresentationJFrameReservationRestaurant() {
     }
 
     public void initFrame() {
@@ -84,7 +85,7 @@ public class PresentationJFrameReservation extends javax.swing.JFrame {
         javax.swing.JOptionPane.INFORMATION_MESSAGE); // L'icône (i)
     }
 
-    public void setDialog(DialogReservation dialog) {
+    public void setDialog(DialogReservationRestaurant dialog) {
         this.dialog = dialog;
     }
     
@@ -196,9 +197,9 @@ public class PresentationJFrameReservation extends javax.swing.JFrame {
             }
         });
 
-        selecteurEnfants.setBackground(new java.awt.Color(200, 200, 200));
         selecteurEnfants.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "" }));
         selecteurEnfants.setSelectedIndex(7);
+        selecteurEnfants.setBackground(new java.awt.Color(200, 200, 200));
         selecteurEnfants.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         selecteurEnfants.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -409,11 +410,11 @@ public class PresentationJFrameReservation extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void validationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validationButtonActionPerformed
-        //dialog.handleValidationEvent();
+        dialog.handleValidationEvent();
     }//GEN-LAST:event_validationButtonActionPerformed
 
     private void annulationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_annulationButtonActionPerformed
-        //dialog.handleCancelEvent();
+        dialog.handleAnnulationEvent();
     }//GEN-LAST:event_annulationButtonActionPerformed
 
     private void listeTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listeTableMouseClicked

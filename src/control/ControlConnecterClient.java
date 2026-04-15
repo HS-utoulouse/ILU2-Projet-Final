@@ -1,7 +1,7 @@
 package control;
 
 import control.controlReservation.ControlReservationRestaurant;
-import dialog.DialogReservation;
+import dialog.dialogReservation.DialogReservation;
 import model.CarnetClientele;
 import model.CarnetReservation;
 
@@ -23,11 +23,6 @@ public class ControlConnecterClient {
 				numClient = -1;
 			}
 		}
-		ControlReservationRestaurant controlResa = new ControlReservationRestaurant(carnetReservation,
-				(carnetClientel.getClient(numClient)));
-
-		DialogReservation dialogResa = new DialogReservation(controlResa);
-		dialogResa.init();
 		return numClient;
 	}
 
