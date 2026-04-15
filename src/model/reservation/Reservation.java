@@ -28,6 +28,18 @@ public abstract class Reservation {
 		this.commentaire = commentaire;
 	}
 
+	public int getJour() {
+		return jour;
+	}
+
+	public int getMois() {
+		return mois;
+	}
+
+	public int getAnnee() {
+		return annee;
+	}
+
 	public String getDate() {
 		return (heure + "/" + jour + "/" + mois + "/" + annee);
 	}

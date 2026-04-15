@@ -34,8 +34,7 @@ public class ReservationRestaurant extends Reservation {
 
 	@Override
 	public String toString() {
-		return "ReservationRestaurant [nombreEnfant=" + nombreEnfant + ", nombreAdultes=" + nombreAdultes
-				+ ", numeroTable=" + numeroTable + ", getDate()=" + getDate() + ", getMail()=" + getMail() + "]";
+		return "ReservationRestaurant : "+getDate();
 	}
 
 }

@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
 import model.reservation.Reservation;
 
@@ -38,6 +39,21 @@ public class CarnetReservation<T extends Reservation> {
 			nombreReservation += 1;
 		}
                 System.out.println("Une réservation a été ajouter au carnet");
+	}
+	
+	public T[] reservationClient(String mail) {
+		
+		T[] tab = (T[]) new Reservation[this.nombreReservation];
+		int nombreElement = 0;
+		
+		for (int i = 0; i < nombreReservation; i++) {
+			if (listeReservation[i].getMail().equals(mail)) {
+				tab[nombreElement] = listeReservation[i];
+				nombreElement++;
+			}
+		}
+		
+		return Arrays.copyOf(tab, nombreElement); //généré avec IA évite une double boucle pour avoir un tableau de la bonne taille
 	}
 
 	@Override
