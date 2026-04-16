@@ -18,24 +18,28 @@ public class DialogMenuConnecter {
     }
 
     public void init() {
-        // 1. On crée la fenêtre
         presentationMenu = new PresentationJFrameMenuConnecter();
-        
-        // (Lien avec le dialog à faire si tu as un setDialog dans ta présentation)
-        // presentationMenu.setDialog(this);
-        
-        // 2. On initialise les modèles des listes
+        presentationMenu.setDialog(this);
         presentationMenu.initFrame();
         
-        // 3. ON RÉCUPÈRE LES DONNÉES DU CONTRÔLEUR
         String[] resasAvenir = controlMenu.getTextesReservationsAvenir();
         String[] resasPassees = controlMenu.getTextesReservationsPassees();
         
-        // 4. ON DONNE L'ORDRE DE REMPLIR LES LISTES
         presentationMenu.peuplerListeFutur(resasAvenir);
         presentationMenu.peuplerListePasser(resasPassees);
         
-        // 5. On affiche la fenêtre
         presentationMenu.setVisible(true);
+    }
+    
+    public String getNomClient(){
+        return controlMenu.getNomClient();
+    }
+    
+    public String getPrenomClient(){
+        return controlMenu.getPrenomClient();
+    }
+    
+    public String getMailClient(){
+        return controlMenu.getMailClient();
     }
 }

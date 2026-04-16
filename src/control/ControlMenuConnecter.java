@@ -48,4 +48,16 @@ public class ControlMenuConnecter {
         }
         return resasPassees.toArray(new String[0]);
     }
+    
+    public String getNomClient(){
+        return client.getNom();
+    }
+    
+    public String getPrenomClient(){
+        return client.getPrenom();
+    }
+    
+    public String getMailClient(){
+        return client.getAdresseMail();
+    }
 }

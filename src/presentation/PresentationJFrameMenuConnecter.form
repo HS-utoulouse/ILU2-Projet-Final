@@ -42,6 +42,11 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JTabbedPane" name="OngletReservation">
+      <Properties>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
@@ -77,7 +82,7 @@
                       <Component id="PaneReservationFutur" min="-2" pref="711" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="ButtonNouvelleRéservation" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="60" max="32767" attributes="0"/>
+                      <EmptySpace pref="149" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -92,11 +97,17 @@
               <SubComponents>
                 <Component class="javax.swing.JList" name="ListeR&#xe9;servationFutur">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Ubuntu" size="25" style="0"/>
+                    </Property>
                     <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
                       <StringArray count="0"/>
                     </Property>
                     <Property name="selectionMode" type="int" value="0"/>
                     <Property name="alignmentX" type="float" value="1.0"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -148,7 +159,7 @@
                       <Component id="TitreReservationPasser" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="PaneReservationPasser" min="-2" pref="711" max="-2" attributes="0"/>
-                      <EmptySpace pref="113" max="32767" attributes="0"/>
+                      <EmptySpace pref="202" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -163,6 +174,9 @@
               <SubComponents>
                 <Component class="javax.swing.JList" name="ListeR&#xe9;servationPasser">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Ubuntu" size="25" style="0"/>
+                    </Property>
                     <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
                       <StringArray count="0"/>
                     </Property>
@@ -194,15 +208,233 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="879" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="PanelActionSurLeCompte" max="32767" attributes="0"/>
+                          <Component id="PanelDonneesPersonnelles" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="22" max="32767" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="907" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                      <Component id="PanelDonneesPersonnelles" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="PanelActionSurLeCompte" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
           </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="PanelDonneesPersonnelles">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                    <BevelBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                                  <Component id="TitreDonneesPersonnelles" min="-2" pref="446" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="TitreAdresseMail" min="-2" pref="186" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="TexteAdresseMail" min="-2" pref="402" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="TitrePrenom" min="-2" pref="186" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="TextePrenomClient" min="-2" pref="402" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="TitreNom" min="-2" pref="186" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="TexteNomClient" min="-2" pref="402" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace pref="162" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <Component id="TitreDonneesPersonnelles" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="TexteNomClient" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TitreNom" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="TextePrenomClient" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TitrePrenom" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="TexteAdresseMail" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TitreAdresseMail" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="136" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="TitreDonneesPersonnelles">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Donn&#xe9;es Personelles"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="TexteNomClient">
+                  <Properties>
+                    <Property name="actionCommand" type="java.lang.String" value="&lt;Not Set&gt;"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TexteNomClientActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="TitreNom">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Nom"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="TitrePrenom">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Prenom"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="TextePrenomClient">
+                </Component>
+                <Component class="javax.swing.JLabel" name="TitreAdresseMail">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Adresse Mail"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="TexteAdresseMail">
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="PanelActionSurLeCompte">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                    <BevelBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                                  <Component id="TitreActionSurLeCompte" min="-2" pref="446" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="193" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="BouttonSuprimerCompte" min="-2" pref="440" max="-2" attributes="0"/>
+                                      <Component id="BouttonAjouterCarteBleu" min="-2" pref="440" max="-2" attributes="0"/>
+                                      <Component id="BouttonChangerMail" alignment="0" min="-2" pref="440" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <Component id="TitreActionSurLeCompte" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                          <Component id="BouttonAjouterCarteBleu" min="-2" pref="60" max="-2" attributes="0"/>
+                          <EmptySpace pref="49" max="32767" attributes="0"/>
+                          <Component id="BouttonChangerMail" min="-2" pref="60" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                          <Component id="BouttonSuprimerCompte" min="-2" pref="60" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="TitreActionSurLeCompte">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Action sur le compte"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="BouttonAjouterCarteBleu">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Ajouter une carte bleu"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                        <LineBorder roundedCorners="true"/>
+                      </Border>
+                    </Property>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="BouttonSuprimerCompte">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Supprimer mon compte"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                        <LineBorder roundedCorners="true"/>
+                      </Border>
+                    </Property>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BouttonSuprimerCompteActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="BouttonChangerMail">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Changer  mon adresse mail"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                        <LineBorder roundedCorners="true"/>
+                      </Border>
+                    </Property>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BouttonChangerMailActionPerformed"/>
+                  </Events>
+                </Component>
+              </SubComponents>
+            </Container>
+          </SubComponents>
         </Container>
       </SubComponents>
     </Container>

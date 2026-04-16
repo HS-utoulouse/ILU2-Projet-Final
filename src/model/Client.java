@@ -6,7 +6,7 @@ public class Client {
 	private String adresseMail;
 	private String mdp;
 
-//	A décommenter pour la question6
+//	A dï¿½commenter pour la question6
 //	private Reservation[] reservations = new Reservation[100]; 
 //	private int nbReservation = 0;
 
@@ -16,6 +16,15 @@ public class Client {
 		this.adresseMail = adresseMail;
 		this.mdp = mdp;
 	}
+        
+       
+        public String getNom(){
+            return nom;
+        }
+        
+        public String getPrenom(){
+            return prenom;
+        }
 
 	public String getAdresseMail() {
 		return adresseMail;
@@ -25,7 +34,7 @@ public class Client {
 		return mdp.equals(this.mdp);
 	}
 
-//	A décommenter pour la question6
+//	A dï¿½commenter pour la question6
 //	public void ajouterReservation(Reservation reservation) {
 //		this.reservations[nbReservation] = reservation;
 //		nbReservation++;

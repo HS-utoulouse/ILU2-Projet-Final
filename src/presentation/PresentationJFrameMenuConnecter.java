@@ -4,6 +4,9 @@
  */
 package presentation;
 
+import dialog.DialogMenuConnecter;
+import dialog.dialogReservation.DialogReservationRestaurant;
+
 /**
  *
  * @author hugo
@@ -22,10 +25,10 @@ public class PresentationJFrameMenuConnecter extends javax.swing.JFrame {
     // 1. Déclarer les modèles (les "cerveaux" de tes listes)
     private javax.swing.DefaultListModel<String> modeleFutur;
     private javax.swing.DefaultListModel<String> modelePasser;
+    private dialog.DialogMenuConnecter dialog;
 
     // 2. Créer une méthode pour lier les modèles et centrer le texte
     public void initFrame() {
-        // Initialisation des modèles
         modeleFutur = new javax.swing.DefaultListModel<>();
         modelePasser = new javax.swing.DefaultListModel<>();
         
@@ -42,6 +45,19 @@ public class PresentationJFrameMenuConnecter extends javax.swing.JFrame {
         // Optionnel : donner un peu d'espace en hauteur aux lignes
         ListeRéservationFutur.setFixedCellHeight(30);
         ListeRéservationPasser.setFixedCellHeight(30);
+        
+        TexteNomClient.setEditable(false);
+        TexteNomClient.setText(dialog.getNomClient());
+        
+        TextePrenomClient.setEditable(false);
+        TextePrenomClient.setText(dialog.getPrenomClient());
+                
+        TexteAdresseMail.setEditable(false);
+        TexteAdresseMail.setText(dialog.getMailClient());
+    }
+    
+    public void setDialog(DialogMenuConnecter dialog) {
+        this.dialog = dialog;
     }
 
     // 3. Les méthodes pour REMPLIR les listes
@@ -79,11 +95,28 @@ public class PresentationJFrameMenuConnecter extends javax.swing.JFrame {
         ListeRéservationPasser = new javax.swing.JList<>();
         TitreReservationPasser = new javax.swing.JLabel();
         TabMonCompte = new javax.swing.JPanel();
+        PanelDonneesPersonnelles = new javax.swing.JPanel();
+        TitreDonneesPersonnelles = new javax.swing.JLabel();
+        TexteNomClient = new javax.swing.JTextField();
+        TitreNom = new javax.swing.JLabel();
+        TitrePrenom = new javax.swing.JLabel();
+        TextePrenomClient = new javax.swing.JTextField();
+        TitreAdresseMail = new javax.swing.JLabel();
+        TexteAdresseMail = new javax.swing.JTextField();
+        PanelActionSurLeCompte = new javax.swing.JPanel();
+        TitreActionSurLeCompte = new javax.swing.JLabel();
+        BouttonAjouterCarteBleu = new javax.swing.JButton();
+        BouttonSuprimerCompte = new javax.swing.JButton();
+        BouttonChangerMail = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        OngletReservation.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        ListeRéservationFutur.setFont(new java.awt.Font("Ubuntu", 0, 25)); // NOI18N
         ListeRéservationFutur.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         ListeRéservationFutur.setAlignmentX(1.0F);
+        ListeRéservationFutur.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         PaneReservationFutur.setViewportView(ListeRéservationFutur);
 
         TitreReservationFutur.setText("Consulter ou annuler vos réservations");
@@ -112,11 +145,12 @@ public class PresentationJFrameMenuConnecter extends javax.swing.JFrame {
                 .addComponent(PaneReservationFutur, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ButtonNouvelleRéservation)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
 
         OngletReservation.addTab("Réservations à Venir", TabReservationFutur);
 
+        ListeRéservationPasser.setFont(new java.awt.Font("Ubuntu", 0, 25)); // NOI18N
         ListeRéservationPasser.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         ListeRéservationPasser.setAlignmentX(1.0F);
         PaneReservationPasser.setViewportView(ListeRéservationPasser);
@@ -141,20 +175,138 @@ public class PresentationJFrameMenuConnecter extends javax.swing.JFrame {
                 .addComponent(TitreReservationPasser)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PaneReservationPasser, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addContainerGap(202, Short.MAX_VALUE))
         );
 
         OngletReservation.addTab("Réservations passées", TabReservationPasser);
+
+        PanelDonneesPersonnelles.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        TitreDonneesPersonnelles.setText("Données Personelles");
+
+        TexteNomClient.setActionCommand("<Not Set>");
+        TexteNomClient.addActionListener(this::TexteNomClientActionPerformed);
+
+        TitreNom.setText("Nom");
+
+        TitrePrenom.setText("Prenom");
+
+        TitreAdresseMail.setText("Adresse Mail");
+
+        javax.swing.GroupLayout PanelDonneesPersonnellesLayout = new javax.swing.GroupLayout(PanelDonneesPersonnelles);
+        PanelDonneesPersonnelles.setLayout(PanelDonneesPersonnellesLayout);
+        PanelDonneesPersonnellesLayout.setHorizontalGroup(
+            PanelDonneesPersonnellesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelDonneesPersonnellesLayout.createSequentialGroup()
+                .addGroup(PanelDonneesPersonnellesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelDonneesPersonnellesLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(TitreDonneesPersonnelles, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelDonneesPersonnellesLayout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addGroup(PanelDonneesPersonnellesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(PanelDonneesPersonnellesLayout.createSequentialGroup()
+                                .addComponent(TitreAdresseMail, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(TexteAdresseMail, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(PanelDonneesPersonnellesLayout.createSequentialGroup()
+                                .addComponent(TitrePrenom, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(TextePrenomClient, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(PanelDonneesPersonnellesLayout.createSequentialGroup()
+                                .addComponent(TitreNom, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(TexteNomClient, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(162, Short.MAX_VALUE))
+        );
+        PanelDonneesPersonnellesLayout.setVerticalGroup(
+            PanelDonneesPersonnellesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelDonneesPersonnellesLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(TitreDonneesPersonnelles)
+                .addGap(90, 90, 90)
+                .addGroup(PanelDonneesPersonnellesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TexteNomClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TitreNom))
+                .addGap(18, 18, 18)
+                .addGroup(PanelDonneesPersonnellesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TextePrenomClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TitrePrenom))
+                .addGap(18, 18, 18)
+                .addGroup(PanelDonneesPersonnellesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TexteAdresseMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TitreAdresseMail))
+                .addContainerGap(136, Short.MAX_VALUE))
+        );
+
+        PanelActionSurLeCompte.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        TitreActionSurLeCompte.setText("Action sur le compte");
+
+        BouttonAjouterCarteBleu.setText("Ajouter une carte bleu");
+        BouttonAjouterCarteBleu.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        BouttonAjouterCarteBleu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        BouttonSuprimerCompte.setText("Supprimer mon compte");
+        BouttonSuprimerCompte.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        BouttonSuprimerCompte.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BouttonSuprimerCompte.addActionListener(this::BouttonSuprimerCompteActionPerformed);
+
+        BouttonChangerMail.setText("Changer  mon adresse mail");
+        BouttonChangerMail.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        BouttonChangerMail.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BouttonChangerMail.addActionListener(this::BouttonChangerMailActionPerformed);
+
+        javax.swing.GroupLayout PanelActionSurLeCompteLayout = new javax.swing.GroupLayout(PanelActionSurLeCompte);
+        PanelActionSurLeCompte.setLayout(PanelActionSurLeCompteLayout);
+        PanelActionSurLeCompteLayout.setHorizontalGroup(
+            PanelActionSurLeCompteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelActionSurLeCompteLayout.createSequentialGroup()
+                .addGroup(PanelActionSurLeCompteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelActionSurLeCompteLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(TitreActionSurLeCompte, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelActionSurLeCompteLayout.createSequentialGroup()
+                        .addGap(193, 193, 193)
+                        .addGroup(PanelActionSurLeCompteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BouttonSuprimerCompte, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BouttonAjouterCarteBleu, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BouttonChangerMail, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        PanelActionSurLeCompteLayout.setVerticalGroup(
+            PanelActionSurLeCompteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelActionSurLeCompteLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(TitreActionSurLeCompte)
+                .addGap(60, 60, 60)
+                .addComponent(BouttonAjouterCarteBleu, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addComponent(BouttonChangerMail, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(BouttonSuprimerCompte, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(90, 90, 90))
+        );
 
         javax.swing.GroupLayout TabMonCompteLayout = new javax.swing.GroupLayout(TabMonCompte);
         TabMonCompte.setLayout(TabMonCompteLayout);
         TabMonCompteLayout.setHorizontalGroup(
             TabMonCompteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 879, Short.MAX_VALUE)
+            .addGroup(TabMonCompteLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(TabMonCompteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(PanelActionSurLeCompte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PanelDonneesPersonnelles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         TabMonCompteLayout.setVerticalGroup(
             TabMonCompteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 907, Short.MAX_VALUE)
+            .addGroup(TabMonCompteLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(PanelDonneesPersonnelles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(PanelActionSurLeCompte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         OngletReservation.addTab("Mon compte", TabMonCompte);
@@ -184,6 +336,18 @@ public class PresentationJFrameMenuConnecter extends javax.swing.JFrame {
         System.out.println("presentation.PresentationJFrameMenuConnecter.ButtonNouvelleRéservationActionPerformed()");
     }//GEN-LAST:event_ButtonNouvelleRéservationActionPerformed
 
+    private void BouttonChangerMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BouttonChangerMailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BouttonChangerMailActionPerformed
+
+    private void BouttonSuprimerCompteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BouttonSuprimerCompteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BouttonSuprimerCompteActionPerformed
+
+    private void TexteNomClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TexteNomClientActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TexteNomClientActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -210,15 +374,28 @@ public class PresentationJFrameMenuConnecter extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BouttonAjouterCarteBleu;
+    private javax.swing.JButton BouttonChangerMail;
+    private javax.swing.JButton BouttonSuprimerCompte;
     private javax.swing.JButton ButtonNouvelleRéservation;
     private javax.swing.JList<String> ListeRéservationFutur;
     private javax.swing.JList<String> ListeRéservationPasser;
     private javax.swing.JTabbedPane OngletReservation;
     private javax.swing.JScrollPane PaneReservationFutur;
     private javax.swing.JScrollPane PaneReservationPasser;
+    private javax.swing.JPanel PanelActionSurLeCompte;
+    private javax.swing.JPanel PanelDonneesPersonnelles;
     private javax.swing.JPanel TabMonCompte;
     private javax.swing.JPanel TabReservationFutur;
     private javax.swing.JPanel TabReservationPasser;
+    private javax.swing.JTextField TexteAdresseMail;
+    private javax.swing.JTextField TexteNomClient;
+    private javax.swing.JTextField TextePrenomClient;
+    private javax.swing.JLabel TitreActionSurLeCompte;
+    private javax.swing.JLabel TitreAdresseMail;
+    private javax.swing.JLabel TitreDonneesPersonnelles;
+    private javax.swing.JLabel TitreNom;
+    private javax.swing.JLabel TitrePrenom;
     private javax.swing.JLabel TitreReservationFutur;
     private javax.swing.JLabel TitreReservationPasser;
     // End of variables declaration//GEN-END:variables
