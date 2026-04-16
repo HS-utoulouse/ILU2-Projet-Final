@@ -6,6 +6,8 @@
 package dialog;
 
 import control.ControlMenuConnecter;
+import control.controlReservation.ControlReservationRestaurant;
+import dialog.dialogReservation.DialogReservationRestaurant;
 import presentation.PresentationJFrameMenuConnecter;
 
 public class DialogMenuConnecter {
@@ -41,5 +43,10 @@ public class DialogMenuConnecter {
     
     public String getMailClient(){
         return controlMenu.getMailClient();
+    }
+    
+    public void lancerModuleReservation(){
+        System.out.println("Lancement du module de reservation");
+        controlMenu.lancerModuleReservation();
     }
 }

@@ -1,16 +1,19 @@
 package control;
 
+import control.controlReservation.ControlReservationRestaurant;
+import dialog.dialogReservation.DialogReservationRestaurant;
 import model.CarnetReservation;
 import model.Client;
 import model.reservation.Reservation;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import model.reservation.ReservationRestaurant;
 
 public class ControlMenuConnecter {
     private Client client;
-    private CarnetReservation<Reservation> carnetReservation;
+    private CarnetReservation<ReservationRestaurant> carnetReservation;
 
-    public ControlMenuConnecter(Client client, CarnetReservation<Reservation> carnetReservation) {
+    public ControlMenuConnecter(Client client, CarnetReservation<ReservationRestaurant> carnetReservation) {
         this.client = client;
         this.carnetReservation = carnetReservation;
     }
@@ -18,6 +21,12 @@ public class ControlMenuConnecter {
     public Reservation[] getReservationsClient() {
         return carnetReservation.reservationClient(client.getAdresseMail());
     }
+    
+    public void lancerModuleReservation(){
+            ControlReservationRestaurant control = new ControlReservationRestaurant(carnetReservation, client);
+            DialogReservationRestaurant dialog = new DialogReservationRestaurant(control);
+            dialog.init(); 
+        }
 
     public String[] getTextesReservationsAvenir() {
         Reservation[] toutesLesResas = getReservationsClient();

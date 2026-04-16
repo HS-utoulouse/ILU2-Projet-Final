@@ -332,8 +332,7 @@ public class PresentationJFrameMenuConnecter extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonNouvelleRéservationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNouvelleRéservationActionPerformed
-        // TODO add your handling code here:
-        System.out.println("presentation.PresentationJFrameMenuConnecter.ButtonNouvelleRéservationActionPerformed()");
+        dialog.lancerModuleReservation();
     }//GEN-LAST:event_ButtonNouvelleRéservationActionPerformed
 
     private void BouttonChangerMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BouttonChangerMailActionPerformed

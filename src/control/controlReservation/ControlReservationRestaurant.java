@@ -1,5 +1,6 @@
 package control.controlReservation;
 
+import dialog.dialogReservation.DialogReservationRestaurant;
 import model.CarnetReservation;
 import model.Client;
 import model.reservation.ReservationRestaurant;
@@ -22,4 +23,5 @@ public class ControlReservationRestaurant extends ControlReservation<Reservation
 		carnetReservation.ajouterReservation(resa);
 		return true;
 	}
+        
 }

@@ -4,7 +4,6 @@ import control.ControlMenuConnecter;
 import dialog.DialogMenuConnecter;
 import model.CarnetReservation;
 import model.Client;
-import model.reservation.Reservation;
 import model.reservation.ReservationRestaurant;
 
 public class TestMenuConnecterGraphique {
@@ -14,7 +13,7 @@ public class TestMenuConnecterGraphique {
         System.out.println("Lancement du test du Menu Connecté avec données fournies...");
 
         // 1. Initialisation du carnet générique
-        CarnetReservation<Reservation> carnet = new CarnetReservation<>();
+        CarnetReservation<ReservationRestaurant> carnet = new CarnetReservation<>();
         
         // 2. Création du client test
         Client clientConnecte = new Client("DUPONT", "Jean", "jean.dupont@email.fr", "mdp123");
