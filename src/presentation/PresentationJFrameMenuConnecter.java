@@ -22,27 +22,22 @@ public class PresentationJFrameMenuConnecter extends javax.swing.JFrame {
         initComponents();
     }
     
-    // 1. Déclarer les modèles (les "cerveaux" de tes listes)
     private javax.swing.DefaultListModel<String> modeleFutur;
     private javax.swing.DefaultListModel<String> modelePasser;
     private dialog.DialogMenuConnecter dialog;
 
-    // 2. Créer une méthode pour lier les modèles et centrer le texte
     public void initFrame() {
         modeleFutur = new javax.swing.DefaultListModel<>();
         modelePasser = new javax.swing.DefaultListModel<>();
         
-        // On donne les modèles aux JList créées par NetBeans
         ListeRéservationFutur.setModel(modeleFutur);
         ListeRéservationPasser.setModel(modelePasser);
         
-        // Pour centrer le texte dans les listes (comme vu précédemment)
         javax.swing.DefaultListCellRenderer renderer = new javax.swing.DefaultListCellRenderer();
         renderer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ListeRéservationFutur.setCellRenderer(renderer);
         ListeRéservationPasser.setCellRenderer(renderer);
         
-        // Optionnel : donner un peu d'espace en hauteur aux lignes
         ListeRéservationFutur.setFixedCellHeight(30);
         ListeRéservationPasser.setFixedCellHeight(30);
         
@@ -60,7 +55,6 @@ public class PresentationJFrameMenuConnecter extends javax.swing.JFrame {
         this.dialog = dialog;
     }
 
-    // 3. Les méthodes pour REMPLIR les listes
     public void peuplerListeFutur(String[] reservations) {
         modeleFutur.clear(); // On vide au cas où
         for (String resa : reservations) {
@@ -90,6 +84,7 @@ public class PresentationJFrameMenuConnecter extends javax.swing.JFrame {
         ListeRéservationFutur = new javax.swing.JList<>();
         TitreReservationFutur = new javax.swing.JLabel();
         ButtonNouvelleRéservation = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         TabReservationPasser = new javax.swing.JPanel();
         PaneReservationPasser = new javax.swing.JScrollPane();
         ListeRéservationPasser = new javax.swing.JList<>();
@@ -124,6 +119,9 @@ public class PresentationJFrameMenuConnecter extends javax.swing.JFrame {
         ButtonNouvelleRéservation.setText("Nouvelle Réservation");
         ButtonNouvelleRéservation.addActionListener(this::ButtonNouvelleRéservationActionPerformed);
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/reloadLogo.png"))); // NOI18N
+        jButton1.addActionListener(this::jButton1ActionPerformed);
+
         javax.swing.GroupLayout TabReservationFuturLayout = new javax.swing.GroupLayout(TabReservationFutur);
         TabReservationFutur.setLayout(TabReservationFuturLayout);
         TabReservationFuturLayout.setHorizontalGroup(
@@ -132,20 +130,25 @@ public class PresentationJFrameMenuConnecter extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addGroup(TabReservationFuturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(ButtonNouvelleRéservation, javax.swing.GroupLayout.DEFAULT_SIZE, 814, Short.MAX_VALUE)
-                    .addComponent(TitreReservationFutur)
+                    .addGroup(TabReservationFuturLayout.createSequentialGroup()
+                        .addComponent(TitreReservationFutur)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(PaneReservationFutur))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
         TabReservationFuturLayout.setVerticalGroup(
             TabReservationFuturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TabReservationFuturLayout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(TitreReservationFutur)
+                .addGap(30, 30, 30)
+                .addGroup(TabReservationFuturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(TitreReservationFutur)
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PaneReservationFutur, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ButtonNouvelleRéservation)
-                .addContainerGap(149, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         OngletReservation.addTab("Réservations à Venir", TabReservationFutur);
@@ -162,20 +165,20 @@ public class PresentationJFrameMenuConnecter extends javax.swing.JFrame {
         TabReservationPasserLayout.setHorizontalGroup(
             TabReservationPasserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TabReservationPasserLayout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
+                .addContainerGap(38, Short.MAX_VALUE)
                 .addGroup(TabReservationPasserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(TitreReservationPasser)
                     .addComponent(PaneReservationPasser, javax.swing.GroupLayout.PREFERRED_SIZE, 814, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28))
+                .addGap(27, 27, 27))
         );
         TabReservationPasserLayout.setVerticalGroup(
             TabReservationPasserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TabReservationPasserLayout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(59, 59, 59)
                 .addComponent(TitreReservationPasser)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PaneReservationPasser, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(202, Short.MAX_VALUE))
+                .addContainerGap(185, Short.MAX_VALUE))
         );
 
         OngletReservation.addTab("Réservations passées", TabReservationPasser);
@@ -347,6 +350,10 @@ public class PresentationJFrameMenuConnecter extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TexteNomClientActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        dialog.handleRafraichirEvent();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -397,5 +404,6 @@ public class PresentationJFrameMenuConnecter extends javax.swing.JFrame {
     private javax.swing.JLabel TitrePrenom;
     private javax.swing.JLabel TitreReservationFutur;
     private javax.swing.JLabel TitreReservationPasser;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }

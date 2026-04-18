@@ -21,6 +21,7 @@ public class ControlReservationRestaurant extends ControlReservation<Reservation
 			return false;
 		}
 		carnetReservation.ajouterReservation(resa);
+		this.carnetReservation.afficherDansTerminal();
 		return true;
 	}
         

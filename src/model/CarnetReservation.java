@@ -55,6 +55,18 @@ public class CarnetReservation<T extends Reservation> {
 		
 		return Arrays.copyOf(tab, nombreElement); //généré avec IA évite une double boucle pour avoir un tableau de la bonne taille
 	}
+	
+	public void afficherDansTerminal() {
+		System.out.println("\n=== ÉTAT ACTUEL DU CARNET (" + nombreReservation + " réservations) ===");
+		if (nombreReservation == 0) {
+			System.out.println("Le carnet est complètement vide.");
+		} else {
+			for (int i = 0; i < nombreReservation; i++) {
+				System.out.println("[" + i + "] -> " + listeReservation[i].toString());
+			}
+		}
+		System.out.println("==================================================\n");
+	}
 
 	@Override
 	public String toString() {

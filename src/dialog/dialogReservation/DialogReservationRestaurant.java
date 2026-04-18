@@ -9,7 +9,7 @@ public class DialogReservationRestaurant extends DialogReservation {
     private int nombreAdulte;
     private int numTable;
 
-    public DialogReservationRestaurant(ControlReservationRestaurant controlResa) {
+    public DialogReservationRestaurant(ControlReservationRestaurant controlResa ) {
         super(controlResa);
     }
     
